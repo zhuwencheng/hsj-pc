@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layer-更懂你的web弹窗解决方案</title>
+
+  <style>
+  html{background-color:#E3E3E3; font-size:14px; color:#000; font-family:'微软雅黑'}
+  a,a:hover{ text-decoration:none;}
+  pre{font-family:'微软雅黑'}
+  .box{padding:20px; background-color:#fff; margin:50px 100px; border-radius:5px;}
+  .box a{padding-right:15px;}
+  #about_hide{display:none}
+  .layer_text{background-color:#fff; padding:20px;}
+  .layer_text p{margin-bottom: 10px; text-indent: 2em; line-height: 23px;}
+  .button{display:inline-block; *display:inline; *zoom:1; line-height:30px; padding:0 20px; background-color:#56B4DC; color:#fff; font-size:14px; border-radius:3px; cursor:pointer; font-weight:normal;}
+  .photos-demo img{width:200px;}
+  </style>
+  
+  <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+  <script src="layer/layer.js"></script>
+</head>
+<body>
+<div class="box">
+<pre>
+ @Name：layer-v<script>document.write(layer.v)</script> 弹层组件说明
+ @Author：贤心
+ @Site：<a href="http://layer.layui.com/"  target="_blank">http://layer.layui.com/</a>
+
+
+<strong>【注意事项】</strong>
+一、使用时，请把文件夹layer整个放置在您站点的任何一个目录，只需引入layer.js即可，除jQuery外，其它文件无需再引入。
+二、如果您的js引入是通过合并处理或者您不想采用layer自动获取的绝对路径，您可以通过layer.config()来配置（详见官网API页）
+三、jquery需1.8+
+四、更多使用说明与演示，请参见layer官网。
+五、使用时请务必保留来源，请勿用于违反我国法律法规的web平台。
+六、layer遵循MIT开源协议，将永久性提供无偿服务。
+</pre>
+</div>
+
+<div class="box" style="text-align:center">
+  <a href="http://layer.layui.com/" target="_blank">更多示例</a>
+  <a href="http://www.layui.com/doc/modules/layer.html" target="_blank">使用文档</a>
+  <a href="http://fly.layui.com/" id="suggest">交流反馈</a>
+  <a href="javascript:;" id="about">关于</a>
+</div>
+
+<script>
+;!function(){
+
+
+//页面一打开就执行，放入ready是为了layer所需配件（css、扩展模块）加载完毕
+layer.ready(function(){
+
+});
+
+//关于
+$('#about').on('click', function(){
+    layer.open({
+        type: 1,
+        title:'风险提示书',
+        area: ['950px', '300px'],
+        btn: ['确定'],
+        content: $('#notice-risk-tem').html() //这里content是一个普通的String
+    });
+});
+
+}();
+</script>
+<script type="text/x-handlebars-template" id="notice-risk-tem">
+    <div class="notice-risk-tem">
+        <p style="text-indent: 2em;">任何通过汉金所进行的交易并不能避免以下风险的产生，汉金所不能也没有义务为如下风险负责：</p>
+
+        <p class="b">一、政策风险：</p>
+        <p style="text-indent: 2em;">因国家宏观政策和相关法律法规发生变化，影响平台服务的正常提供。</p>
+        <p class="b">二、信用风险：</p>
+        <p style="text-indent: 2em;">平台不对投资项目本金和收益提供任何保证或承诺。在发生最不利情况下（可能但并不一定发生），可能不利于用户实现项目的预期收益甚至本金遭受损失。</p>
+        <p class="b">三、市场风险：</p>
+        <p style="text-indent: 2em;">由于市场供求关系、利率变动、资产价值波动等不确定的未来市场变化，在发生最不利情况下（可能但并不一定发生），可能不利于用户实现项目的预期收益甚至本金遭受损失。</p>
+        <p class="b">四、提前终止风险：</p>
+        <p style="text-indent: 2em;">根据市场环境变化平台有权停止交易服务功能，在提前终止情形下，用户面临丧失投资机会及再投资的风险。</p>
+        <p class="b">五、信息传递风险：</p>
+        <p style="text-indent: 2em;">平台将按协议约定进行信息披露，用户应充分关注并及时主动查询项目相关信息，如未及时查询，或由于通讯故障、系统故障以及其他不可抗力等因素的影响使得无法及时了解产品信息，由此产生责任和风险应由用户承担。</p>
+        <p class="b">六、不可抗力及意外事件风险：</p>
+        <p style="text-indent: 2em;">包括但不限于自然灾害、金融市场危机、战争、黑客攻击、病毒感染等不能预见、不能避免、不能克服的不可抗力事件，对于由于不可抗力及意外事件风险导致的任何损失，用户须自行承担。</p>
+        <p class="b">七、流动性风险：</p>
+        <p style="text-indent: 2em;">用户以债权转让方式通过平台进行转让的，平台不对债权转让完成的时间以及债权转让能否全部成功实现做出任何承诺，债权未成功转让的，用户面临资金不能变现、丧失其他投资机会的风险。</p>
+
+        <p style="margin-top: 20px;" class="b">特别提示：</p>
+        <p class="b" style="text-indent: 2em;">前述风险提示不能穷尽全部风险及市场的全部情形。如您通过汉金所进行下一步操作，即表示认真阅读本风险提示并完全了解与接受，您应对自身决策和交易行为承担全部责任。</p>
+    </div>
+</script>
+</body>
+</html>
